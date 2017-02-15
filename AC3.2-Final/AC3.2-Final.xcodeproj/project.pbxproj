@@ -20,6 +20,7 @@
 		D369B80C1E54BE0C0023384C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B80B1E54BE0C0023384C /* User.swift */; };
 		D369B80E1E54C1770023384C /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B80D1E54C1770023384C /* CustomAlert.swift */; };
 		D369B8101E54C7FC0023384C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D369B80F1E54C7FC0023384C /* GoogleService-Info.plist */; };
+		D369B8121E54E7940023384C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B8111E54E7940023384C /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		D369B80B1E54BE0C0023384C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D369B80D1E54C1770023384C /* CustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		D369B80F1E54C7FC0023384C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D369B8111E54E7940023384C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = ../DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		D369B7FD1E54B2830023384C /* UtilitiesAndServices */ = {
 			isa = PBXGroup;
 			children = (
+				D369B8111E54E7940023384C /* DataManager.swift */,
 				D369B80D1E54C1770023384C /* CustomAlert.swift */,
 			);
 			name = UtilitiesAndServices;
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D369B7FF1E54B2ED0023384C /* LogInViewController.swift in Sources */,
+				D369B8121E54E7940023384C /* DataManager.swift in Sources */,
 				D369B8031E54B3730023384C /* UploadViewController.swift in Sources */,
 				D369B8011E54B33A0023384C /* FeedTableViewController.swift in Sources */,
 				1EA112FF1E53C0B1004B66E3 /* AppDelegate.swift in Sources */,
