@@ -59,13 +59,14 @@ class FeedTableViewController: UITableViewController {
                 dump(child)
                 if let snap = child as? FIRDataSnapshot,
                     let valueDict = snap.value as? [String:String] {
-                    let picString = valueDict["url"] ?? ""
+                    let picString = valueDict["imageUrl"] ?? ""
                     newPics.append(picString)
                 }
             }
             self.pictureURLS = newPics
             self.tableView.reloadData()
         })
+        print("????????????????????????????????????????????????\(pictureURLS)")
     }
     
     // MARK: - Table view data source
