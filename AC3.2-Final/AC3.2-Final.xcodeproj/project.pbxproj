@@ -8,18 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		1EA112FF1E53C0B1004B66E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA112FE1E53C0B1004B66E3 /* AppDelegate.swift */; };
-		1EA113011E53C0B1004B66E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA113001E53C0B1004B66E3 /* ViewController.swift */; };
 		1EA113041E53C0B1004B66E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA113021E53C0B1004B66E3 /* Main.storyboard */; };
 		1EA113061E53C0B1004B66E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EA113051E53C0B1004B66E3 /* Assets.xcassets */; };
 		1EA113091E53C0B1004B66E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA113071E53C0B1004B66E3 /* LaunchScreen.storyboard */; };
 		1EA113131E53C130004B66E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EA113121E53C130004B66E3 /* GoogleService-Info.plist */; };
 		42F701846D7174CF5CCFFEC6 /* Pods_AC3_2_Final.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA81E3A843E8FCC07FEEE67 /* Pods_AC3_2_Final.framework */; };
+		D369B7FF1E54B2ED0023384C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B7FE1E54B2ED0023384C /* LogInViewController.swift */; };
+		D369B8011E54B33A0023384C /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B8001E54B33A0023384C /* FeedTableViewController.swift */; };
+		D369B8031E54B3730023384C /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B8021E54B3730023384C /* UploadViewController.swift */; };
+		D369B8091E54B4090023384C /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B8071E54B4090023384C /* FeedTableViewCell.swift */; };
+		D369B80A1E54B4090023384C /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D369B8081E54B4090023384C /* FeedTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1EA112FB1E53C0B1004B66E3 /* AC3.2-Final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AC3.2-Final.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA112FE1E53C0B1004B66E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1EA113001E53C0B1004B66E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1EA113031E53C0B1004B66E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1EA113051E53C0B1004B66E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EA113081E53C0B1004B66E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -28,6 +31,11 @@
 		36FC7FDCA9319FBCD5A87DB8 /* Pods-AC3.2-Final.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AC3.2-Final.release.xcconfig"; path = "Pods/Target Support Files/Pods-AC3.2-Final/Pods-AC3.2-Final.release.xcconfig"; sourceTree = "<group>"; };
 		5B497AAB8F237B2B41EC1F79 /* Pods-AC3.2-Final.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AC3.2-Final.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AC3.2-Final/Pods-AC3.2-Final.debug.xcconfig"; sourceTree = "<group>"; };
 		BFA81E3A843E8FCC07FEEE67 /* Pods_AC3_2_Final.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AC3_2_Final.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D369B7FE1E54B2ED0023384C /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		D369B8001E54B33A0023384C /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		D369B8021E54B3730023384C /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		D369B8071E54B4090023384C /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		D369B8081E54B4090023384C /* FeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +71,10 @@
 		1EA112FD1E53C0B1004B66E3 /* AC3.2-Final */ = {
 			isa = PBXGroup;
 			children = (
+				D369B7FD1E54B2830023384C /* UtilitiesAndServices */,
+				D369B7FC1E54B27C0023384C /* UI */,
+				D369B7FB1E54B2700023384C /* ViewControllers */,
 				1EA112FE1E53C0B1004B66E3 /* AppDelegate.swift */,
-				1EA113001E53C0B1004B66E3 /* ViewController.swift */,
-				1EA113021E53C0B1004B66E3 /* Main.storyboard */,
-				1EA113051E53C0B1004B66E3 /* Assets.xcassets */,
-				1EA113071E53C0B1004B66E3 /* LaunchScreen.storyboard */,
 				1EA1130A1E53C0B1004B66E3 /* Info.plist */,
 				1EA113121E53C130004B66E3 /* GoogleService-Info.plist */,
 			);
@@ -89,6 +96,59 @@
 				36FC7FDCA9319FBCD5A87DB8 /* Pods-AC3.2-Final.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D369B7FB1E54B2700023384C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D369B8041E54B38D0023384C /* LoginTab */,
+				D369B8051E54B3A40023384C /* FeedTab */,
+				D369B8061E54B3BA0023384C /* UploadTab */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D369B7FC1E54B27C0023384C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1EA113021E53C0B1004B66E3 /* Main.storyboard */,
+				1EA113071E53C0B1004B66E3 /* LaunchScreen.storyboard */,
+				1EA113051E53C0B1004B66E3 /* Assets.xcassets */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		D369B7FD1E54B2830023384C /* UtilitiesAndServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UtilitiesAndServices;
+			sourceTree = "<group>";
+		};
+		D369B8041E54B38D0023384C /* LoginTab */ = {
+			isa = PBXGroup;
+			children = (
+				D369B7FE1E54B2ED0023384C /* LogInViewController.swift */,
+			);
+			name = LoginTab;
+			sourceTree = "<group>";
+		};
+		D369B8051E54B3A40023384C /* FeedTab */ = {
+			isa = PBXGroup;
+			children = (
+				D369B8071E54B4090023384C /* FeedTableViewCell.swift */,
+				D369B8081E54B4090023384C /* FeedTableViewCell.xib */,
+				D369B8001E54B33A0023384C /* FeedTableViewController.swift */,
+			);
+			name = FeedTab;
+			sourceTree = "<group>";
+		};
+		D369B8061E54B3BA0023384C /* UploadTab */ = {
+			isa = PBXGroup;
+			children = (
+				D369B8021E54B3730023384C /* UploadViewController.swift */,
+			);
+			name = UploadTab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EA113091E53C0B1004B66E3 /* LaunchScreen.storyboard in Resources */,
+				D369B80A1E54B4090023384C /* FeedTableViewCell.xib in Resources */,
 				1EA113131E53C130004B66E3 /* GoogleService-Info.plist in Resources */,
 				1EA113061E53C0B1004B66E3 /* Assets.xcassets in Resources */,
 				1EA113041E53C0B1004B66E3 /* Main.storyboard in Resources */,
@@ -215,8 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EA113011E53C0B1004B66E3 /* ViewController.swift in Sources */,
+				D369B7FF1E54B2ED0023384C /* LogInViewController.swift in Sources */,
+				D369B8031E54B3730023384C /* UploadViewController.swift in Sources */,
+				D369B8011E54B33A0023384C /* FeedTableViewController.swift in Sources */,
 				1EA112FF1E53C0B1004B66E3 /* AppDelegate.swift in Sources */,
+				D369B8091E54B4090023384C /* FeedTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +405,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "AC3.2-Final/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nyc.c4q.AC3-2-Final";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,6 +420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "AC3.2-Final/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nyc.c4q.AC3-2-Final";
 				PRODUCT_NAME = "$(TARGET_NAME)";
