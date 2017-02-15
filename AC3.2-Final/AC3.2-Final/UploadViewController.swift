@@ -20,6 +20,7 @@ import FirebaseStorage
 class UploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     // parts from graffy and last assessment
     
+    let currentUser = FIRAuth.auth()?.currentUser
     let categoryReference = FIRDatabase.database().reference()
     let databaseReference = FIRDatabase.database().reference().child("Users")
     var picToUpload: UIImage?

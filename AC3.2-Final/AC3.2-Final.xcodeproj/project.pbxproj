@@ -42,6 +42,7 @@
 		D369B80D1E54C1770023384C /* CustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		D369B80F1E54C7FC0023384C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D369B8111E54E7940023384C /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = ../DataManager.swift; sourceTree = "<group>"; };
+		D369B8131E55067B0023384C /* AC3.2-Final.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "AC3.2-Final.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +78,7 @@
 		1EA112FD1E53C0B1004B66E3 /* AC3.2-Final */ = {
 			isa = PBXGroup;
 			children = (
+				D369B8131E55067B0023384C /* AC3.2-Final.entitlements */,
 				D369B7FD1E54B2830023384C /* UtilitiesAndServices */,
 				D369B7FC1E54B27C0023384C /* UI */,
 				D369B7FB1E54B2700023384C /* ViewControllers */,
@@ -195,7 +197,13 @@
 				TargetAttributes = {
 					1EA112FA1E53C0B1004B66E3 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GD7JHZ9557;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -416,6 +424,8 @@
 			baseConfigurationReference = 5B497AAB8F237B2B41EC1F79 /* Pods-AC3.2-Final.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "AC3.2-Final/AC3.2-Final.entitlements";
+				DEVELOPMENT_TEAM = GD7JHZ9557;
 				INFOPLIST_FILE = "AC3.2-Final/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -431,6 +441,8 @@
 			baseConfigurationReference = 36FC7FDCA9319FBCD5A87DB8 /* Pods-AC3.2-Final.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "AC3.2-Final/AC3.2-Final.entitlements";
+				DEVELOPMENT_TEAM = GD7JHZ9557;
 				INFOPLIST_FILE = "AC3.2-Final/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

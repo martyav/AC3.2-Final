@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 
 class FeedTableViewController: UITableViewController {
-    // this vc is a frankenstein of graffy, the breaking bad project, and the emoji card project
+    // this vc is a frankenstein of graffy, the review, the breaking bad project, and the emoji card project
     
     let cellReuseIdentifier = "feedCell"
     let databaseReference = FIRDatabase.database().reference().child("Users")
@@ -23,10 +23,49 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        getPics()
+        
         tableView.register(UINib(nibName: "FeedTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: cellReuseIdentifier)
         storage = FIRStorage.storage().reference(forURL: "gs://jason-project-65494.appspot.com")
         
+        let userPostRef = self.databaseReference.child("imageURL")
+        
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        
+        let userReference = self.databaseReference.child(uid)
+        
+        userReference.child("imageUrl").observe(.value, with: { (snapShot) in
+            if let urlString = snapShot.value as? String {
+                //self.pictureURLS.downloadImage(from: urlString, with: nil)
+            }
+        })
+        
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! \(pictureURLS)")
+        
         self.tableView.separatorStyle = .none
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getPics()
+    }
+    
+    func getPics() {
+        databaseReference.observeSingleEvent(of: .value, with: { (snapshot) in
+            var newPics: [String] = []
+            for child in snapshot.children {
+                dump(child)
+                if let snap = child as? FIRDataSnapshot,
+                    let valueDict = snap.value as? [String:String] {
+                    let picString = valueDict["url"] ?? ""
+                    newPics.append(picString)
+                }
+            }
+            self.pictureURLS = newPics
+            self.tableView.reloadData()
+        })
     }
     
     // MARK: - Table view data source
@@ -56,6 +95,7 @@ class FeedTableViewController: UITableViewController {
                 if let validImage = image {
                     DispatchQueue.main.async {
                         cell.imageView?.image = validImage
+                        cell.descript?.text = "efwegaergawerbhesber gw g w g aeg wa gf wq f wrbv er vw agv"
                         self.tableView.reloadInputViews()
                     }
                 }
