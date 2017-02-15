@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>802673658056-45oaaogpmdu8soprcg31cf1asl6v2u76.apps.googleusercontent.com</string>
+	<string>489631458374-7jl8bs2r2g1td3n11igb5abfs9sd1sq1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.802673658056-45oaaogpmdu8soprcg31cf1asl6v2u76</string>
+	<string>com.googleusercontent.apps.489631458374-7jl8bs2r2g1td3n11igb5abfs9sd1sq1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBBJAWD6Ijbhp1hm5F_44l5Qwx3P6sscEA</string>
+	<string>AIzaSyCD10hLFAVq2o-IhavZ6GfeYC95GQ281dg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>802673658056</string>
+	<string>489631458374</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>nyc.c4q.ac32final</string>
+	<string>nyc.c4q.AC3-2-Final</string>
 	<key>PROJECT_ID</key>
-	<string>ac-32-final</string>
+	<string>jason-project-65494</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ac-32-final.appspot.com</string>
+	<string>jason-project-65494.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:802673658056:ios:dcc7e7b909a22e9f</string>
+	<string>1:489631458374:ios:24de189c057b7720</string>
 	<key>DATABASE_URL</key>
-	<string>https://ac-32-final.firebaseio.com</string>
+	<string>https://jason-project-65494.firebaseio.com</string>
 </dict>
 </plist>

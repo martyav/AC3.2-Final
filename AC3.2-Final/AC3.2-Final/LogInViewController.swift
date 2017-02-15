@@ -55,6 +55,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: - View Stuff
+    
     func setupViewHierarchy() {
         self.edgesForExtendedLayout = []
         
@@ -71,7 +73,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     func configureConstraints() {
         logo.snp.makeConstraints { (view) in
             view.centerX.equalToSuperview()
-            view.top.equalToSuperview().offset(10)
+            view.top.equalToSuperview().offset(30)
         }
         
         emailTextField.snp.makeConstraints { (view) in
@@ -108,6 +110,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user: FIRUser?, error: Error?) in
                 
                 if user != nil {
+                    showAlert("Log in successful!", presentOn: self)
                     let newViewController = LogInViewController()
                     if let tabVC =  self.navigationController {
                         tabVC.show(newViewController, sender: nil)
@@ -124,16 +127,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             let password = passwordTextField.text {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error: Error?) in
                 if error != nil {
+                    showAlert("We couldn't register you!", presentOn: self)
                     print (error!)
-                    
                     return
                 }
-                
-                guard let uid = user?.uid else { return }
-                
-                let imageName = NSUUID().uuidString
-                let storageRef = FIRStorage.storage().reference().child("\(imageName).png")
-                
             })
         }
     }
@@ -155,9 +152,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let view = UIImageView()
         
         view.image = #imageLiteral(resourceName: "meatly_logo")
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 5)
-        view.layer.shadowRadius = 5
         
         return view
     }()

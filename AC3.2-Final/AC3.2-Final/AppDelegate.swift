@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // reusing code from recent Graffy project -- https://github.com/C4Q/AC3.2-U6-Graphy/blob/master/Graffy/AppDelegate.swift
         
@@ -29,12 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navControllerOne = UINavigationController(rootViewController: tabOne)
         let navControllerTwo = UINavigationController(rootViewController: tabTwo)
+        let navControllerThree = UINavigationController(rootViewController: logIn)
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = logIn
+        window?.rootViewController = tabController
         window?.makeKeyAndVisible()
         
-        let viewControllers = [navControllerOne, navControllerTwo]
+        let viewControllers = [navControllerThree, navControllerOne, navControllerTwo]
         tabController.setViewControllers(viewControllers, animated: true)
         
         let tabOneImage = #imageLiteral(resourceName: "chickenleg")
