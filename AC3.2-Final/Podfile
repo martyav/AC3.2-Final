@@ -10,4 +10,5 @@ target 'AC3.2-Final' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'SnapKit'
+  pod 'JSSAlertView'
 end

@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabController = UITabBarController()
         
+        let logIn = LogInViewController()
         let tabOne = FeedTableViewController()
         let tabTwo = UploadViewController()
         
@@ -30,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navControllerTwo = UINavigationController(rootViewController: tabTwo)
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = tabController
+        window?.rootViewController = logIn
         window?.makeKeyAndVisible()
         
         let viewControllers = [navControllerOne, navControllerTwo]

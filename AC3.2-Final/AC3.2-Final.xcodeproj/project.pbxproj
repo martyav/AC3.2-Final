@@ -18,6 +18,8 @@
 		D369B8031E54B3730023384C /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B8021E54B3730023384C /* UploadViewController.swift */; };
 		D369B8091E54B4090023384C /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B8071E54B4090023384C /* FeedTableViewCell.swift */; };
 		D369B80A1E54B4090023384C /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D369B8081E54B4090023384C /* FeedTableViewCell.xib */; };
+		D369B80C1E54BE0C0023384C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B80B1E54BE0C0023384C /* User.swift */; };
+		D369B80E1E54C1770023384C /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369B80D1E54C1770023384C /* CustomAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		D369B8021E54B3730023384C /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		D369B8071E54B4090023384C /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		D369B8081E54B4090023384C /* FeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
+		D369B80B1E54BE0C0023384C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D369B80D1E54C1770023384C /* CustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 		D369B7FD1E54B2830023384C /* UtilitiesAndServices */ = {
 			isa = PBXGroup;
 			children = (
+				D369B80D1E54C1770023384C /* CustomAlert.swift */,
 			);
 			name = UtilitiesAndServices;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 		D369B8041E54B38D0023384C /* LoginTab */ = {
 			isa = PBXGroup;
 			children = (
+				D369B80B1E54BE0C0023384C /* User.swift */,
 				D369B7FE1E54B2ED0023384C /* LogInViewController.swift */,
 			);
 			name = LoginTab;
@@ -251,7 +257,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FF10A47D6146A0ACCEAFE9C7 /* [CP] Copy Pods Resources */ = {
@@ -280,7 +286,9 @@
 				D369B8031E54B3730023384C /* UploadViewController.swift in Sources */,
 				D369B8011E54B33A0023384C /* FeedTableViewController.swift in Sources */,
 				1EA112FF1E53C0B1004B66E3 /* AppDelegate.swift in Sources */,
+				D369B80C1E54BE0C0023384C /* User.swift in Sources */,
 				D369B8091E54B4090023384C /* FeedTableViewCell.swift in Sources */,
+				D369B80E1E54C1770023384C /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
