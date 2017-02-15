@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 
 class FeedTableViewController: UITableViewController {
-    // this vc is a frankenstein of graphy, the breaking bad project, and the emoji card project
+    // this vc is a frankenstein of graffy, the breaking bad project, and the emoji card project
     
     let cellReuseIdentifier = "feedCell"
     let databaseReference = FIRDatabase.database().reference().child("Users")

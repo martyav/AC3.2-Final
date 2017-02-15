@@ -7,21 +7,174 @@
 //
 
 import UIKit
+import SnapKit
+import JSSAlertView
+import AVKit
+import AVFoundation
+import MobileCoreServices
+import PhotosUI
+import FirebaseAuth
+import Firebase
+import FirebaseStorage
 
-class UploadViewController: UIViewController {
+class UploadViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
+    // parts from graffy 
+    
+    let categoryReference = FIRDatabase.database().reference()
+    
+    let databaseReference = FIRDatabase.database().reference().child("Users")
+    var arrOfAssetURLString = [String]()
+    var nameAssignedToPicture: String?
+    var storage: FIRStorageReference!
+    var currentIndex: CGFloat!
+    var results = [PHAsset]()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleTextField.delegate = self
+        self.edgesForExtendedLayout = UIRectEdge(rawValue: 0)
+        
+        setupViewHeirarchy()
+        configureConstraints()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidAppear(_ animated: Bool) {
+        if FIRAuth.auth()?.currentUser == nil {
+            upload.isEnabled = false
+        } else {
+            upload.isEnabled = true
+        }
     }
-    */
-
+    
+    // MARK: - TextField Delegates
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        
+        if textField.text != "" {
+            nameAssignedToPicture = text
+        }
+    }
+    
+    // MARK: - Actions
+    
+    func uploadAction(sender: UIButton) {
+        if let nameOfPic = nameAssignedToPicture {
+            //let filePath = "\(selectedCategory!) Storage test/"
+            let stringasURL = URL(string: nameOfPic)
+            
+            self.storage.child(filePath).putFile(stringasURL!,   metadata: nil) { (metadata, error) in
+                if let error = error {
+                    showAlert("We couldn't upload your picture at this time!", presentOn: self)
+                    print("Error uploading: \(error)")
+                    
+                    return
+                }
+                
+                self.key = self.databaseReference.childByAutoId().key
+                
+                if let currentUsersUid = FIRAuth.auth()?.currentUser?.uid {
+                    let values = ["Picture \(self.key!)": metadata?.downloadURL()?.absoluteString]
+                    let userReference = self.databaseReference.child(currentUsersUid).child("uploads")
+                    self.categoryReference.child(self.selectedCategory!).updateChildValues(values)
+                    userReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                        if err != nil {
+                            showAlert("We couldn't upload your picture at this time!", presentOn: self)
+                            print(err!)
+                            
+                            return
+                        }
+                    })
+                }
+            }
+        } else {
+            showAlert("Re-enter a title!", presentOn: self)
+            
+            return
+        }
+        
+//        uploadProgressAlert = UploadProgressAlert()
+//        uploadProgressAlert?.show(self, title: UploadProgressAlert.tellThem(.inProgress), text: nil, addProgressBar: true)
+//        uploadProgressAlert?.progressBar.setProgress(0.0, animated: true)
+//        
+//        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector:#selector(UploadsViewController.setProgress), userInfo: nil, repeats: true)
+    }
+    
+    // Mark: - Constraints & Things
+    
+    func configureConstraints() {
+        pic.snp.makeConstraints { (view) in
+            view.leading.trailing.equalToSuperview()
+            view.top.equalToSuperview().offset(30)
+            view.width.equalTo(375)
+            view.height.equalTo(pic.snp.width)
+        }
+        
+        uploadSomething.snp.makeConstraints{ (view) in
+            view.center.equalTo(pic.snp.center)
+        }
+        
+        uploadButton.snp.makeConstraints{ (view) in
+            view.center.equalTo(pic.snp.center)
+            view.width.equalTo(pic.snp.center)
+            view.height.equalTo(pic.snp.center)
+        }
+        
+        descriptTextField.snp.makeConstraints { (textField) in
+            textField.leading.equalToSuperview().offset(8.0)
+            textField.trailing.equalToSuperview().inset(8.0)
+            textField.top.equalTo(pic.snp.bottom).offset(8.0)
+            textField.bottom.equalToSuperview()
+        }
+    }
+    
+    func setupViewHeirarchy() {
+        self.view.addSubview(descriptTextField)
+        self.view.addSubview(pic)
+        self.view.addSubview(uploadSomething)
+        self.view.addSubview(uploadButton)
+    }
+    
+    // MARK: - Views initialized down here!
+    
+    internal lazy var descriptTextField: UITextField = {
+        let textField: UITextField = UITextField(frame: .zero)
+        
+        textField.placeholder = "Add a description..."
+        textField.returnKeyType = .done
+        
+        return textField
+    }()
+    
+    internal lazy var pic: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        
+        return imageView
+    }()
+    
+    internal lazy var uploadSomething: UILabel = {
+        let label: UILabel = UILabel()
+        
+        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        
+        return label
+    }()
+    
+    lazy var uploadButton:  UIButton = {
+        let button = UIButton(type: UIButtonType.custom)
+        
+        button.addTarget(self, action: #selector(uploadAction(sender:)), for: .touchUpInside)
+        
+        button.backgroundColor = .clear
+        
+        return button
+    }()
 }

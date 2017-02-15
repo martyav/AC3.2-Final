@@ -9,6 +9,7 @@
 import UIKit
 
 class DataManager {
+    // from graffy
     
     static let dataManager = DataManager()
     private init() {}
