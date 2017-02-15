@@ -128,7 +128,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error: Error?) in
                 if error != nil {
                     showAlert("We couldn't register you!", presentOn: self)
-                    print (error!)
+                    print(error!)
                     return
                 }
             })
@@ -170,7 +170,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     lazy var passwordTextField: UITextField = {
         let view = UITextField()
         
-        view.placeholder = "Jello Biafra"
+        view.placeholder = "Jellobiafra"
         view.isSecureTextEntry = true
         view.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         view.textAlignment = .left

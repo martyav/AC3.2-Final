@@ -10,6 +10,9 @@ import UIKit
 
 class FeedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var pic: UIImageView!
+    @IBOutlet weak var descript: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

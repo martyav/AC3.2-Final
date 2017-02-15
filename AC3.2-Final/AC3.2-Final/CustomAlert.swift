@@ -12,8 +12,6 @@ import JSSAlertView
 func showAlert(_ message: String, presentOn: UIViewController) {
     let thisAlert = JSSAlertView()
     
-    //thisAlert.recolorText(Colors.accentColor)
-    
     thisAlert.show(
         presentOn,
         title: message.uppercased()
