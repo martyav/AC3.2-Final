@@ -76,58 +76,75 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let url = info[UIImagePickerControllerReferenceURL] as? UIImage {
-            self.picToUpload = url
+        if let theyPicked = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.picToUpload = theyPicked
+            pic.contentMode = .scaleAspectFill
+            self.pic.image = self.picToUpload
+            uploadPic(pic: theyPicked)
         }
         
         // dismissing imagePickerController
-        dismiss(animated: true) {
-            if let url = self.picToUpload {
-                self.pic.image = self.picToUpload
-            }
-        }
+        dismiss(animated: true)
     }
     
-    func savePic() {
-        if let nameOfPic = nameAssignedToPicture {
-            let filePath = "Storage test/"
-            let stringasURL = URL(string: nameOfPic)
+    func uploadPic(pic: UIImage) {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else { return }
+        let imageName = NSUUID().uuidString
+        let storageRef = FIRStorage.storage().reference().child("\(imageName).png")
+        
+        if let uploadData = UIImagePNGRepresentation(pic) {
             
-            self.storage.child(filePath).putFile(stringasURL!, metadata: nil) { (metadata, error) in
-                if let error = error {
-                    showAlert("We couldn't upload your picture at this time!", presentOn: self)
-                    print("Error uploading: \(error)")
-                    
+            storageRef.put(uploadData, metadata: nil, completion: { (metaData, error) in
+                if error != nil {
+                    print (error)
                     return
                 }
                 
-                self.key = self.databaseReference.childByAutoId().key
-                
-                if let currentUsersUid = FIRAuth.auth()?.currentUser?.uid {
-                    let values = ["Picture \(self.key!)": metadata?.downloadURL()?.absoluteString]
-                    let userReference = self.databaseReference.child(currentUsersUid).child("uploads")
-                    
-                    self.categoryReference.updateChildValues(values)
-                    
-                    userReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                        if err != nil {
-                            showAlert("We couldn't upload your picture at this time!", presentOn: self)
-                            print(err!)
-                            
-                            return
-                        }
-                    })
-                }
-            }
-        } else {
-            showAlert("Re-enter a title!", presentOn: self)
-            
-            return
+                showAlert("Photo uploaded!", presentOn: self)
+            })
         }
-        
-        //let image = imageFrom(phAsset: imageAsset, collectionPicWidth, collectionPicHeight)
-        //pic.image = image
     }
+    
+//    func savePic() {
+//        if let nameOfPic = nameAssignedToPicture {
+//            let filePath = "Storage test/"
+//            let stringasURL = URL(string: nameOfPic)
+//            
+//            self.storage.child(filePath).putFile(stringasURL!, metadata: nil) { (metadata, error) in
+//                if let error = error {
+//                    showAlert("We couldn't upload your picture at this time!", presentOn: self)
+//                    print("Error uploading: \(error)")
+//                    
+//                    return
+//                }
+//                
+//                self.key = self.databaseReference.childByAutoId().key
+//                
+//                if let currentUsersUid = FIRAuth.auth()?.currentUser?.uid {
+//                    let values = ["Picture \(self.key!)": metadata?.downloadURL()?.absoluteString]
+//                    let userReference = self.databaseReference.child(currentUsersUid).child("uploads")
+//                    
+//                    self.categoryReference.updateChildValues(values)
+//                    
+//                    userReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+//                        if err != nil {
+//                            showAlert("We couldn't upload your picture at this time!", presentOn: self)
+//                            print(err!)
+//                            
+//                            return
+//                        }
+//                    })
+//                }
+//            }
+//        } else {
+//            showAlert("Re-enter a title!", presentOn: self)
+//            
+//            return
+//        }
+//        
+//        //let image = imageFrom(phAsset: imageAsset, collectionPicWidth, collectionPicHeight)
+//        //pic.image = image
+//    }
     
     // Mark: - Constraints & Things
     
@@ -196,7 +213,8 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         button.addTarget(self, action: #selector(uploadAction(sender:)), for: .touchUpInside)
         
-        button.backgroundColor = .clear
+        button.backgroundColor = .green
+        button.alpha = 0.2
         
         return button
     }()
