@@ -7,15 +7,41 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // reusing code from recent Graffy project -- https://github.com/C4Q/AC3.2-U6-Graphy/blob/master/Graffy/AppDelegate.swift
+        
+        FIRApp.configure()
+        FIRStorage.storage()
+        
+        let tabController = UITabBarController()
+        
+        let tabOne = FeedTableViewController()
+        let tabTwo = UploadViewController()
+        
+        let navControllerOne = UINavigationController(rootViewController: tabOne)
+        let navControllerTwo = UINavigationController(rootViewController: tabTwo)
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = tabController
+        window?.makeKeyAndVisible()
+        
+        let viewControllers = [navControllerOne, navControllerTwo]
+        tabController.setViewControllers(viewControllers, animated: true)
+        
+        let tabOneImage = #imageLiteral(resourceName: "chickenleg")
+        let tabTwoImage = #imageLiteral(resourceName: "upload")
+        
+        tabOne.tabBarItem = UITabBarItem(title: "Feed", image: tabOneImage, tag: 0)
+        tabTwo.tabBarItem = UITabBarItem(title: "Upload", image: tabTwoImage, tag: 1)
+        
         return true
     }
 
