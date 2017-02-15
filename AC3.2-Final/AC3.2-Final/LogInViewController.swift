@@ -28,10 +28,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         setupViewHierarchy()
         
-        let loggedInAlready = tabBarController
+        let loggedInAlready = FeedTableViewController()
         
         if FIRAuth.auth()?.currentUser != nil {
-            self.navigationController?.pushViewController(loggedInAlready!, animated: true)
+            self.navigationController?.pushViewController(loggedInAlready, animated: true)
             
         }
     }
@@ -111,10 +111,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 
                 if user != nil {
                     showAlert("Log in successful!", presentOn: self)
-                    let newViewController = LogInViewController()
-                    if let tabVC =  self.navigationController {
-                        tabVC.show(newViewController, sender: nil)
-                    }
+                    let newViewController = FeedTableViewController()
+                    
                 } else {
                         showAlert("Oops! we couldn't log you in!", presentOn: self)
                 }
@@ -137,12 +135,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     private func registerUserIntoDatabaseWithUID(uid: String, values: [String: Any]) {
         let userReference = self.databaseReference.child(uid)
-        let newViewController = tabBarController
+        let newViewController = FeedTableViewController()
         
         userReference.updateChildValues(values)
         
         if let tabVC =  self.navigationController {
-            tabVC.show(newViewController!, sender: nil)
+            tabVC.show(newViewController, sender: nil)
         }
     }
     
