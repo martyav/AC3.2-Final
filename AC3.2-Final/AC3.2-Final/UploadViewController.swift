@@ -5,7 +5,6 @@
 //  Created by Marty Avedon on 2/15/17.
 //  Copyright © 2017 C4Q. All rights reserved.
 //
-
 import UIKit
 import SnapKit
 import JSSAlertView
@@ -82,6 +81,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
             pic.contentMode = .scaleAspectFill
             self.pic.image = self.picToUpload
             uploadPic(pic: theyPicked)
+            //savePic()
         }
         
         // dismissing imagePickerController
@@ -101,52 +101,47 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate, U
                     return
                 }
                 
+                self.nameAssignedToPicture = imageName
                 showAlert("Photo uploaded!", presentOn: self)
             })
         }
     }
     
-//    func savePic() {
-//        if let nameOfPic = nameAssignedToPicture {
-//            let filePath = "Storage test/"
-//            let stringasURL = URL(string: nameOfPic)
-//            
-//            self.storage.child(filePath).putFile(stringasURL!, metadata: nil) { (metadata, error) in
-//                if let error = error {
-//                    showAlert("We couldn't upload your picture at this time!", presentOn: self)
-//                    print("Error uploading: \(error)")
-//                    
-//                    return
-//                }
-//                
-//                self.key = self.databaseReference.childByAutoId().key
-//                
-//                if let currentUsersUid = FIRAuth.auth()?.currentUser?.uid {
-//                    let values = ["Picture \(self.key!)": metadata?.downloadURL()?.absoluteString]
-//                    let userReference = self.databaseReference.child(currentUsersUid).child("uploads")
-//                    
-//                    self.categoryReference.updateChildValues(values)
-//                    
-//                    userReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-//                        if err != nil {
-//                            showAlert("We couldn't upload your picture at this time!", presentOn: self)
-//                            print(err!)
-//                            
-//                            return
-//                        }
-//                    })
+//        func savePic() {
+//            if let nameOfPic = nameAssignedToPicture {
+//                let filePath = "Storage test/"
+//                let stringasURL = URL(string: nameOfPic)
+//    
+//                self.storage.child(filePath).putFile(stringasURL!, metadata: nil) { (metadata, error) in
+//                    if let error = error {
+//                        showAlert("We couldn't upload your picture at this time!", presentOn: self)
+//                        print("Error uploading: \(error)")
+//    
+//                        return
+//                    }
+//    
+//                    self.key = self.databaseReference.childByAutoId().key
+//    
+//                    if let currentUsersUid = FIRAuth.auth()?.currentUser?.uid {
+//                        let values = ["Picture \(self.key!)": metadata?.downloadURL()?.absoluteString]
+//                        let userReference = self.databaseReference.child(currentUsersUid).child("uploads")
+//    
+//                        self.categoryReference.updateChildValues(values)
+//    
+//                        userReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+//                            if err != nil {
+//                                showAlert("We couldn't upload your picture at this time!", presentOn: self)
+//                                print(err!)
+//    
+//                                return
+//                            }
+//                        })
+//                    }
 //                }
 //            }
-//        } else {
-//            showAlert("Re-enter a title!", presentOn: self)
-//            
-//            return
-//        }
-//        
-//        //let image = imageFrom(phAsset: imageAsset, collectionPicWidth, collectionPicHeight)
-//        //pic.image = image
 //    }
-    
+//    }
+
     // Mark: - Constraints & Things
     
     func configureConstraints() {

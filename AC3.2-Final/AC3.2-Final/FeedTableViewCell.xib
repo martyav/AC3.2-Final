@@ -19,14 +19,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="474.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFp-xM-ett">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFp-xM-ett">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="375" id="7Bk-rK-zHL"/>
                             <constraint firstAttribute="width" constant="375" id="CYp-Zu-mjN"/>
                         </constraints>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kbj-aC-ABi">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kbj-aC-ABi">
                         <rect key="frame" x="0.0" y="383" width="375" height="84"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -37,7 +37,7 @@
                 <constraints>
                     <constraint firstItem="fFp-xM-ett" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="8Jo-CZ-xhQ"/>
                     <constraint firstItem="kbj-aC-ABi" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="OyW-71-83J"/>
-                    <constraint firstItem="kbj-aC-ABi" firstAttribute="top" secondItem="fFp-xM-ett" secondAttribute="top" id="YoW-L6-uPs"/>
+                    <constraint firstItem="kbj-aC-ABi" firstAttribute="top" secondItem="fFp-xM-ett" secondAttribute="top" constant="383" id="YoW-L6-uPs"/>
                     <constraint firstAttribute="bottomMargin" secondItem="kbj-aC-ABi" secondAttribute="bottom" constant="-0.5" id="cBl-nQ-9Ba"/>
                     <constraint firstItem="kbj-aC-ABi" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="gyP-yX-dJh"/>
                     <constraint firstAttribute="trailing" secondItem="fFp-xM-ett" secondAttribute="trailing" id="hP5-n6-ejp"/>
