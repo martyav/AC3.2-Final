@@ -17,34 +17,36 @@ import FirebaseAuth
 import Firebase
 import FirebaseStorage
 
-class UploadViewController: UIViewController, UINavigationControllerDelegate, UITextFieldDelegate {
-    // parts from graffy 
+class UploadViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+    // parts from graffy and last assessment
     
     let categoryReference = FIRDatabase.database().reference()
-    
     let databaseReference = FIRDatabase.database().reference().child("Users")
+    var picToUpload: UIImage?
     var arrOfAssetURLString = [String]()
     var nameAssignedToPicture: String?
     var storage: FIRStorageReference!
     var currentIndex: CGFloat!
+    var key: String? = nil
     var results = [PHAsset]()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleTextField.delegate = self
+        view.backgroundColor = .white
+        
+        descriptTextField.delegate = self
         self.edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         
         setupViewHeirarchy()
         configureConstraints()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         if FIRAuth.auth()?.currentUser == nil {
-            upload.isEnabled = false
+            uploadButton.isEnabled = false
         } else {
-            upload.isEnabled = true
+            uploadButton.isEnabled = true
         }
     }
     
@@ -67,11 +69,31 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
     // MARK: - Actions
     
     func uploadAction(sender: UIButton) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let url = info[UIImagePickerControllerReferenceURL] as? UIImage {
+            self.picToUpload = url
+        }
+        
+        // dismissing imagePickerController
+        dismiss(animated: true) {
+            if let url = self.picToUpload {
+                self.pic.image = self.picToUpload
+            }
+        }
+    }
+    
+    func savePic() {
         if let nameOfPic = nameAssignedToPicture {
-            //let filePath = "\(selectedCategory!) Storage test/"
+            let filePath = "Storage test/"
             let stringasURL = URL(string: nameOfPic)
             
-            self.storage.child(filePath).putFile(stringasURL!,   metadata: nil) { (metadata, error) in
+            self.storage.child(filePath).putFile(stringasURL!, metadata: nil) { (metadata, error) in
                 if let error = error {
                     showAlert("We couldn't upload your picture at this time!", presentOn: self)
                     print("Error uploading: \(error)")
@@ -84,7 +106,9 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
                 if let currentUsersUid = FIRAuth.auth()?.currentUser?.uid {
                     let values = ["Picture \(self.key!)": metadata?.downloadURL()?.absoluteString]
                     let userReference = self.databaseReference.child(currentUsersUid).child("uploads")
-                    self.categoryReference.child(self.selectedCategory!).updateChildValues(values)
+                    
+                    self.categoryReference.updateChildValues(values)
+                    
                     userReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
                         if err != nil {
                             showAlert("We couldn't upload your picture at this time!", presentOn: self)
@@ -101,11 +125,8 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
             return
         }
         
-//        uploadProgressAlert = UploadProgressAlert()
-//        uploadProgressAlert?.show(self, title: UploadProgressAlert.tellThem(.inProgress), text: nil, addProgressBar: true)
-//        uploadProgressAlert?.progressBar.setProgress(0.0, animated: true)
-//        
-//        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector:#selector(UploadsViewController.setProgress), userInfo: nil, repeats: true)
+        //let image = imageFrom(phAsset: imageAsset, collectionPicWidth, collectionPicHeight)
+        //pic.image = image
     }
     
     // Mark: - Constraints & Things
@@ -124,8 +145,8 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
         
         uploadButton.snp.makeConstraints{ (view) in
             view.center.equalTo(pic.snp.center)
-            view.width.equalTo(pic.snp.center)
-            view.height.equalTo(pic.snp.center)
+            view.width.equalTo(pic.snp.width)
+            view.height.equalTo(pic.snp.height)
         }
         
         descriptTextField.snp.makeConstraints { (textField) in
@@ -162,6 +183,8 @@ class UploadViewController: UIViewController, UINavigationControllerDelegate, UI
     
     internal lazy var uploadSomething: UILabel = {
         let label: UILabel = UILabel()
+        
+        label.backgroundColor = .lightGray
         
         label.font = UIFont.boldSystemFont(ofSize: 20.0)
         
